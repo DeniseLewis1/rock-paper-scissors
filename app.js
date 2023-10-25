@@ -1,6 +1,6 @@
 const computerChoiceDisplay = document.getElementById("computer-choice");
 const userChoiceDisplay = document.getElementById("user-choice");
-const result = document.getElementById("result");
+const resultDisplay = document.getElementById("result");
 const possibleChoices = document.querySelectorAll("button");
 let userChoice;
 let computerChoice;
@@ -26,4 +26,20 @@ function generateComputerChoice() {
     }
 
     computerChoiceDisplay.innerHTML = computerChoice;
+};
+
+function getResult() {
+    if (computerChoice === userChoice) {
+        resultDisplay.innerHTML = "It's a draw!";
+    }
+    if (computerChoice === "rock" && userChoice === "paper" || 
+        computerChoice === "paper" && userChoice === "scissors" || 
+        computerChoice === "scissors" && userChoice === "rock") {
+        resultDisplay.innerHTML = "You win!";
+    }
+    if (userChoice === "rock" && computerChoice === "paper" || 
+        userChoice === "paper" && computerChoice === "scissors" || 
+        userChoice === "scissors" && computerChoice === "rock") {
+        resultDisplay.innerHTML = "You lose!";
+    }
 };

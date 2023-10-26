@@ -1,3 +1,56 @@
+const userChoiceDisplay = document.createElement("h2");
+const computerChoiceDisplay = document.createElement("h2");
+const resultDisplay = document.createElement("h2");
+const gameGrid = document.getElementById("game");
+gameGrid.append(userChoiceDisplay, computerChoiceDisplay, resultDisplay);
+
+const choices = ["rock", "paper", "scissors"];
+let userChoice;
+let computerChoice;
+
+const handleClick = (e) => {
+    userChoice = e.target.id;
+    userChoiceDisplay.innerHTML = `User Choice: ${userChoice}`;
+    generateComputerChoice();
+    getResult();
+};
+
+const generateComputerChoice = () => {
+    computerChoice = choices[Math.floor(Math.random() * choices.length)];
+    computerChoiceDisplay.innerHTML = `Computer Choice: ${computerChoice}`;
+}
+
+for (let i = 0; i < choices.length; i++) {
+    const button = document.createElement("button");
+    button.id = choices[i];
+    button.innerHTML = choices[i];
+    button.addEventListener("click", handleClick);
+    gameGrid.appendChild(button);
+}
+
+const getResult = () => {
+    switch (userChoice + computerChoice) {
+        case "rockpaper":
+        case "paperscissors":
+        case "scissorsrock":
+            resultDisplay.innerHTML = "You lose!";
+            break;
+        case "paperrock":
+        case "scissorspaper":
+        case "rockscissors":
+            resultDisplay.innerHTML = "You win!";
+            break;
+        case "rockrock":
+        case "paperpaper":
+        case "scissorsscissors":
+            resultDisplay.innerHTML = "It's a draw!";
+            break;
+    }
+};
+
+
+/************** BEGINNER VERSION **************/
+/*
 const computerChoiceDisplay = document.getElementById("computer-choice");
 const userChoiceDisplay = document.getElementById("user-choice");
 const resultDisplay = document.getElementById("result");
@@ -43,3 +96,4 @@ function getResult() {
         resultDisplay.innerHTML = "You lose!";
     }
 };
+*/

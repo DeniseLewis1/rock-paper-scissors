@@ -1,3 +1,43 @@
+/************** ADVANCED VERSION **************/
+const resultDisplay = document.querySelector("#result");
+const choicesDisplay = document.querySelector("#choices");
+const choices = ["rock", "paper", "scissors"];
+
+const handleClick = (e) => {
+    getResults(e.target.innerHTML, choices[Math.floor(Math.random() * choices.length)]);
+};
+
+choices.forEach(choice => {
+    const button = document.createElement("button");
+    button.innerHTML = choice;
+    button.addEventListener("click", handleClick);
+    choicesDisplay.appendChild(button);
+});
+
+const getResults = (userChoice, computerChoice) => {
+    switch (userChoice + computerChoice) {
+        case "rockpaper":
+        case "paperscissors":
+        case "scissorsrock":
+            resultDisplay.innerHTML = `You chose ${userChoice} and the computer chose ${computerChoice}. You lose!`;
+            break;
+        case "paperrock":
+        case "scissorspaper":
+        case "rockscissors":
+            resultDisplay.innerHTML = `You chose ${userChoice} and the computer chose ${computerChoice}. You win!`;
+            break;
+        case "rockrock":
+        case "paperpaper":
+        case "scissorsscissors":
+            resultDisplay.innerHTML = `You chose ${userChoice} and the computer chose ${computerChoice}. It's a draw!`;
+            break;
+    }
+};
+
+
+
+/************** INTERMEDIATE VERSION **************/
+/*
 const userChoiceDisplay = document.createElement("h2");
 const computerChoiceDisplay = document.createElement("h2");
 const resultDisplay = document.createElement("h2");
@@ -47,6 +87,8 @@ const getResult = () => {
             break;
     }
 };
+*/
+
 
 
 /************** BEGINNER VERSION **************/
